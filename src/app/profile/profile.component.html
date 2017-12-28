@@ -1,0 +1,27 @@
+<div class="comtainer" id="profile">
+  <div class="col-md-6 mx-auto">
+    <div id="title" class="col-md-12">
+      <div id="img"></div>
+      <div id="info">
+        <div id="name">Andrii Kazmyrovych</div>
+        <div id="style">Midwest Emo</div>
+        <div id="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit aliquam error omnis, libero ex voluptate blanditiis et molestiae porro maxime?.</div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div id="category">
+        <span class="categ active">Audio</span>
+        <span class="categ">Video</span>
+      </div>
+      <div id="audios">
+        <mat-card *ngFor="let song of songs; let i = index" class="track">
+          <div class="num">{{i+1}}</div>
+          <span class="name">{{song}}</span>
+          <div class="play-btn">
+            <i class="fa fa-play" aria-hidden="true"></i>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
