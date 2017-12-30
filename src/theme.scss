@@ -3,7 +3,7 @@
 
 $app-primary: mat-palette($mat-lime, 200);
 $app-accent:  mat-palette($mat-pink, 500, 900, A100);
-$app-warn:    mat-palette($mat-green);
+$app-warn:    mat-palette($mat-light-green, 50);
 
 $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 

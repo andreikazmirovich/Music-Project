@@ -11,7 +11,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-image: url('../shared/images/_b4ExV1yHns1.jpg');
+      background-image: url('../shared/images/r4brmAI_Xqo.jpg');
       float: left;
       margin-right: 20px;
     }
@@ -28,68 +28,77 @@
       }
     }
   }
-  #category{
+  #category {
     text-align: center;
     width: 100%;
     margin: 50px auto 0 auto;
     border-bottom: 1px solid lighten(black, 90%);
     padding-bottom: 15px;
-    .categ{
+    .categ {
       cursor: pointer;
       margin: 5px 10px;
       font-size: 20px;
       font-weight: lighter;
-      &.active{
-        border-bottom: 1px solid lighten(mat-color($app-warn), 15%);
+      &.active {
+        border-bottom: 1px solid mat-color($app-warn);
         color: mat-color($app-warn);
       }
-      &:hover{
+      &:hover {
         color: mat-color($app-warn);
       }
     }
   }
   #audios {
     margin-top: 20px;
-    .track {
-      height: 40px;
-      line-height: 40px;
-      padding: 0 10px;
-      background-color: mat-color($app-primary);
-      border-radius: 18px 0 0 18px;
-      color: white;
-      margin: 10px 0;
-      .num{
-        width: 30px;
-        height: 30px;
-        margin-top: 5px;
-        text-align: center;
-        line-height: 31px;
-        float: left;
-        background-color: white;
-        border-radius: 50%;
-        color: mat-color($app-primary);
-      }
-      .name{
-        margin-left: 20px;
-      }
-      .play-btn{
-        float: right;
-        width: 80px;
-        height: 100%;
-        margin-right: -10px;
-        text-align: center;
-        background-color: white;
-        border-left: 1px solid mat-color($app-warn);
-        .fa-play {
-          color: white;
-          line-height: 40px;
-          font-size: 25px; 
+    .track-block {
+      margin-top: 20px;
+      .track {
+        height: 40px;
+        line-height: 40px;
+        padding: 0 10px;
+        background-color: mat-color($app-primary);
+        border-radius: 18px 0 0 18px;
+        color: white;
+        margin: 10px 0;
+        .num {
+          width: 30px;
+          height: 30px;
+          margin-top: 5px;
+          text-align: center;
+          line-height: 31px;
+          float: left;
+          background-color: white;
+          border-radius: 50%;
           color: mat-color($app-primary);
-          cursor: pointer;
-          &:active{
-            font-size: 23px;
+        }
+        .name {
+          margin-left: 20px;
+        }
+        .play-btn {
+          float: right;
+          width: 80px;
+          height: 100%;
+          margin-right: -10px;
+          text-align: center;
+          background-color: white;
+          border-left: 1px solid mat-color($app-warn);
+          .fa {
+            line-height: 40px;
+            font-size: 25px;
+            color: mat-color($app-primary);
+            cursor: pointer;
+            &:active {
+              font-size: 23px;
+            }
           }
         }
+      }
+      .track-info{
+        width: 90%;
+        height: 1px;
+        background-color: mat-color($app-warn);
+        margin: -10px auto;
+        transition: ease .2s all;
       }
     }
   }
