@@ -1,35 +1,44 @@
 @import "../../theme.scss";
-#navbar{
-    height: 50px;
-    background-color: mat-color($app-primary);
-    padding: 5px;
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-    top: 0;
-    #logo{
-        float: left;
-        width: 40px;
-        height: 40px;
-        background-image: url('../shared/images/icon.svg');
-        background-size: contain;
-        transition: ease .1s all;
-        cursor: pointer;
-        &:hover{
-            transform: scale(1.1);
-        }
+@import "../shared/styles/const";
+#navbar {
+  height: 50px;
+  background-color: mat-color($app-primary);
+  padding: 5px;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  top: 0;
+  #logo {
+    float: left;
+    width: 40px;
+    height: 40px;
+    background-image: url('../shared/images/icon.svg');
+    background-size: contain;
+    transition: ease .1s all;
+    cursor: pointer;
+  }
+  #plus {
+    float: right;
+    margin-top: 4px;
+    width: 32px;
+    height: 32px;
+    background-image: url('../shared/images/plus.svg');
+    background-size: contain;
+    transition: ease .1s all;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
     }
-    #plus{
-        float: right;
-        margin-top: 4px;
-        width: 32px;
-        height: 32px;
-        background-image: url('../shared/images/plus.svg');
-        background-size: contain;
-        transition: ease .1s all;
-        cursor: pointer;
-        &:hover{
-            transform: scale(1.1);
-        }
+  }
+  #login {
+    float: right;
+    color: white;
+    cursor: pointer;
+    line-height: 35px;
+    margin-left: 20px;
+    position: relative;
+    i{
+        font-size: 37px;
     }
+  }
 }

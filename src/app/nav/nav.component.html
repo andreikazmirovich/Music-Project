@@ -2,7 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div id="logo"></div>
+        <div id="logo" class="hvr-buzz-out"></div>
+        <div id="login">
+          <i class="fa fa-user" (click)="loginModalIsOpen = !loginModalIsOpen"></i>
+          <app-login-modal *ngIf="loginModalIsOpen"></app-login-modal>
+        </div>
         <div id="plus"></div>
       </div>
     </div>

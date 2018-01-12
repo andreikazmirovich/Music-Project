@@ -1,0 +1,12 @@
+<form [formGroup]="form" (ngSubmit)="login(form.value)" novalidate>
+  <div id="log-modal">
+    <div id="triangle"></div>
+    <mat-form-field>
+      <input [formControl]="form.controls.email" matInput placeholder="Пошта">
+    </mat-form-field>
+    <mat-form-field>
+      <input [formControl]="form.controls.password" matInput placeholder="Пароль">
+    </mat-form-field>
+    <button mat-raised-button color="primary">Увійти</button>
+  </div>
+</form>

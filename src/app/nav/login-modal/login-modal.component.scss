@@ -1,0 +1,31 @@
+@import "../../shared/styles/const";
+
+#log-modal {
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    left: -87px;
+    top: 60px;
+    background-color: white;
+    border-radius: $radius;
+    position: absolute;
+    padding: 20px;
+    box-shadow: $shadow;
+    &::after {
+      content: '';
+      top: -20px;
+      left: 90px;
+      position: absolute;
+      border: 10px solid transparent;
+      border-bottom: 10px solid white;
+    }
+    mat-form-field{
+        width: 100%;
+        color: black;
+    }
+    button{
+        color: white;
+        margin: 0 auto;
+        display: block;
+    }
+  }

@@ -23,7 +23,7 @@ export class ProfileComponent implements AfterViewInit {
   constructor() {}
 
   closeAllTracksInfo(): void {
-    const tracksInfo = document.querySelectorAll('.track-info');
+    const tracksInfo = document.querySelectorAll('.track-info') as HTMLCollectionOf<HTMLElement>;
     Array.from(tracksInfo).forEach(element => {
       element.style.height = '0px';
       const btn = element.parentNode.children[0].children[2].children[0];
