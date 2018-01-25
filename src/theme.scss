@@ -3,8 +3,9 @@
 
 $app-primary: mat-palette($mat-lime, 200);
 $app-accent:  mat-palette($mat-pink, 500, 900, A100);
-$app-warn:    mat-palette($mat-light-green, 50);
+$app-warn:    mat-palette($mat-red);
+$app-light:   mat-palette($mat-pink, 50);
 
 $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
-@include angular-material-theme($app-theme)
+@include angular-material-theme($app-theme);
