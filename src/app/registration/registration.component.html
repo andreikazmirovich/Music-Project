@@ -1,0 +1,36 @@
+<form [formGroup]="form" (ngSubmit)="register(form.value)">
+  <div class="container" id="registration">
+    <div class="col-md-6 mx-auto">
+      <div id="title">Реєстрація</div>
+      <div class="col-md-8 mx-auto">
+        <label for="photo-upload" id="photo-place">
+          <div *ngIf="userPhoto" id="photo" [ngStyle]="{'background-image': 'url('+ userPhoto +')'}"></div>
+          <i *ngIf="!userPhoto" class="fa fa-user-o" aria-hidden="true"></i>
+        </label>
+        <input id="photo-upload" #photo type="file" (change)="uploadPhoto(photo.files)">
+        <mat-form-field>
+          <input type="text" matInput formControlName="name" placeholder="{{placeholders.name}}">
+          <mat-error *ngIf="form.controls.email.invalid && form.controls.email.errors.required && !form.controls.email.errors.pattern">{{formErrors.isEmpty}}</mat-error>
+          <mat-error *ngIf="form.controls.email.invalid && form.controls.email.errors.pattern">{{formErrors.invalidEmail}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput formControlName="email" placeholder="{{placeholders.email}}">
+          <mat-error *ngIf="form.controls.email.invalid && form.controls.email.errors.required && !form.controls.email.errors.pattern">{{formErrors.isEmpty}}</mat-error>
+          <mat-error *ngIf="form.controls.email.invalid && form.controls.email.errors.pattern">{{formErrors.invalidEmail}}</mat-error>
+        </mat-form-field>
+        <div formGroupName="passwords">
+          <mat-form-field>
+            <input type="password" matInput formControlName="password" placeholder="{{placeholders.password}}">
+            <mat-error *ngIf="form.controls.passwords.controls.password.invalid && form.controls.passwords.controls.password.errors.required && !form.controls.passwords.controls.password.errors.pattern">{{formErrors.isEmpty}}</mat-error>
+            <mat-error *ngIf="form.controls.passwords.controls.password.invalid && form.controls.passwords.controls.password.errors.pattern">{{formErrors.invalidPassword}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input type="password" matInput formControlName="rePassword" placeholder="{{placeholders.rePassword}}">
+            <mat-error *ngIf="form.controls.passwords.invalid">{{formErrors.invalidRePassword}}</mat-error>
+          </mat-form-field>
+        </div>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Готово</button>
+      </div>
+    </div>
+  </div>
+</form>

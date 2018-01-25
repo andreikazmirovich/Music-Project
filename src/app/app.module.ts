@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -12,6 +13,8 @@ import { LoginModalComponent } from './nav/login-modal/login-modal.component';
 import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './shared/services/login.service';
+import { RegistrationComponent } from './registration/registration.component';
+import { TokenInterceptor } from './shared/services/token.interceptor';
 
 
 @NgModule({
@@ -19,7 +22,8 @@ import { LoginService } from './shared/services/login.service';
     AppComponent,
     NavComponent,
     ProfileComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -31,7 +35,12 @@ import { LoginService } from './shared/services/login.service';
     AppRoutingModule
   ],
   providers: [
-    LoginService
+    LoginService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

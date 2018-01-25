@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
 
 import { UserRegistration } from './UserRegistration';
 import { UserLogin } from './UserLogin';
@@ -10,18 +12,30 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  static registration(regData: UserRegistration) {
-    console.log(regData);
+  public registration(regData: UserRegistration): Observable<any> {
+    const newUser = {
+      name: regData.name,
+      email: regData.email,
+      photo: regData.photo,
+      password: regData.password,
+      c_password: regData.rePassword
+    };
+    return this.http.post<any>(`${API_URL.BASE}${API_URL.REGISTRATION}`, newUser);
   }
 
-  public login(logData: UserLogin) {
-    console.log(logData);
-    this.http.post<any>(`${API_URL.BASE}${API_URL.LOGIN}`, logData).subscribe(response => {
-      if (response.token) {
-        localStorage.setItem('curentUser', response.token);
-        localStorage.getItem('curentUser');
-      }
-    });
+  public login(logData: UserLogin): Observable<any> {
+    return this.http.post<any>(`${API_URL.BASE}${API_URL.LOGIN}`, logData)
+      .do(response => {
+        localStorage.setItem('token', response.token);
+      });
+  }
+
+  public getUser(): Observable<any>{
+    return this.http.get(`${API_URL.BASE}${API_URL.USER}`);
+  }
+
+  public getToken() {
+    return localStorage.getItem('token');
   }
 
 }

@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   loginModalIsOpen = false;
+  user = localStorage.getItem('name');
 
   constructor() { }
+
+  isLogged() {
+    localStorage.getItem('name');
+  }
 
   ngOnInit() {
   }

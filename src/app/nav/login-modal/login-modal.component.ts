@@ -14,10 +14,10 @@ export class LoginModalComponent implements OnInit {
     private fb: FormBuilder,
     private auth: LoginService
   ) {
-    this.createFormControl();
+    this.createLoginForm();
   }
 
-  createFormControl() {
+  createLoginForm() {
     this.form = this.fb.group({
       'email': ['', [Validators.required, Validators.email]],
       'password': ['', Validators.required]
@@ -25,7 +25,12 @@ export class LoginModalComponent implements OnInit {
   }
 
   login(data) {
-    this.auth.login(data);
+    this.auth.login(data).subscribe(response => {
+      console.log(response);
+      this.auth.getUser().subscribe(data => {
+        console.log(data);
+      });
+    });
   }
 
   ngOnInit() {

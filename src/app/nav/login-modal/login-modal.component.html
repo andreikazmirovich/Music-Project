@@ -5,8 +5,8 @@
       <input [formControl]="form.controls.email" matInput placeholder="Пошта">
     </mat-form-field>
     <mat-form-field>
-      <input [formControl]="form.controls.password" matInput placeholder="Пароль">
+      <input type="password" [formControl]="form.controls.password" matInput placeholder="Пароль">
     </mat-form-field>
-    <button mat-raised-button color="primary">Увійти</button>
+    <button mat-raised-button color="primary" [disabled]="form.invalid">Увійти</button>
   </div>
 </form>

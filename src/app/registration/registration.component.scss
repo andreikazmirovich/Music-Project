@@ -1,0 +1,46 @@
+@import "../../theme";
+
+#registration{
+    #title{
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        border-bottom: 1px solid mat-color($app-light);
+        margin-bottom: 10px;
+    }
+    #photo-place{
+        display: block;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: mat-color($app-light);
+        margin: 0 auto 20px auto;
+        text-align: center;
+        line-height: 180px;
+        color: white;
+        font-size: 120px;
+        cursor: pointer;
+        #photo{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-position: center;
+            background-size: cover;
+        }
+    }
+    input[type="file"]{
+        display: none;
+    }
+    mat-form-field{
+        width: 100%;
+        text-align: center;
+        input{
+            text-align: center;
+        }
+    }
+    button{
+        color: white;
+        margin: 10px auto 0 auto;
+        display: block;
+    }
+}
