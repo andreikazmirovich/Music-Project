@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../shared/services/login.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-nav',
@@ -6,13 +10,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  loginModalIsOpen = false;
-  user = localStorage.getItem('name');
+  isLoggedIn = false;
+  userPhoto = localStorage.getItem('userPhoto');
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
-  isLogged() {
-    localStorage.getItem('name');
+  openLoginDialog() {
+    const dialogRef = this.dialog.open(LoginDialogComponent, {
+      width: '250px'
+    });
   }
 
   ngOnInit() {
