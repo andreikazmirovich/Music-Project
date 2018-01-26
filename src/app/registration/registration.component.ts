@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { LoginService } from '../shared/services/login.service';
 import { PasswordValidation } from './passwordValidator';
@@ -16,12 +17,14 @@ export class RegistrationComponent implements OnInit {
   protected formErrors = {
     isEmpty: 'Поле обов\'язкове для заповнення',
     invalidName: 'Ім\'я повенна мати більше 5-ти символів',
+    invalidUsername: 'Неправильне ім\'я користувача',
     invalidEmail: 'Неправильна електронна пошта',
     invalidPassword: 'Пароль повинен місти тільки цифри та букви (6 символів)',
     invalidRePassword: 'Паролі не збігаються'
   };
   protected placeholders = {
-    name: 'Як вас називати?',
+    name: 'Яке ваше ім\'я?',
+    username: 'Як вас називати?',
     email: 'Яка адреса вашої пошти?',
     password: 'Який буде проль?',
     rePassword: 'Повторіть пароль'
@@ -29,7 +32,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) {
     this.createRegistrationForm();
   }
@@ -37,6 +41,7 @@ export class RegistrationComponent implements OnInit {
   createRegistrationForm() {
     this.form = this.fb.group({
       'name': ['', [Validators.required, Validators.minLength(5)]],
+      'username': ['', [Validators.required, Validators.pattern(/^[a-z0-9_-]{3,16}$/)]],
       'email': ['', [Validators.required, Validators.pattern(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)]],
       'passwords': this.fb.group({
         'password': ['', [Validators.required, Validators.pattern(/^(?![0-9]{6,18})[0-9a-zA-Z]{6,18}$/)]],
@@ -61,7 +66,16 @@ export class RegistrationComponent implements OnInit {
     newUserData.photo = this.userPhoto || '';
 
     this.loginService.registration(newUserData).subscribe(response => {
-      console.log(response);
+      if (response.message === 'User created Successfully!') {
+        this.loginService.login({
+          email: newUserData.email,
+          password: newUserData.password
+        }).subscribe(resp => {
+          if (localStorage.getItem('username')) {
+            this.router.navigate([localStorage.getItem('username')]);
+          }
+        });
+      }
     });
   }
 

@@ -3,13 +3,12 @@
     <div class="row">
       <div class="col-md-12">
         <div id="logo" class="hvr-buzz-out"></div>
-        <!-- <div id="login">
-          <i class="fa fa-user" (click)="loginModalIsOpen = !loginModalIsOpen"></i>
-        </div> -->
-        <div id="login">
-          <i class="fa fa-user" (click)="loginModalIsOpen = !loginModalIsOpen"></i>
-          <app-login-modal *ngIf="loginModalIsOpen"></app-login-modal>
-        </div>
+        <div routerLink="/profile" *ngIf="userPhoto;else login" id="awatar" [ngStyle]="{'background-image': 'url('+ userPhoto +')'}"></div>
+        <ng-template #login>
+          <div id="login">
+            <i class="fa fa-user" (click)="openLoginDialog()"></i>
+          </div>
+        </ng-template>
         <div id="plus"></div>
       </div>
     </div>

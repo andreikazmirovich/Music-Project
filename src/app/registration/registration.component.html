@@ -14,6 +14,11 @@
           <mat-error *ngIf="form.controls.email.invalid && form.controls.email.errors.pattern">{{formErrors.invalidEmail}}</mat-error>
         </mat-form-field>
         <mat-form-field>
+          <input type="text" matInput formControlName="username" placeholder="{{placeholders.username}}">
+          <mat-error *ngIf="form.controls.username.invalid && form.controls.username.errors.required && !form.controls.username.errors.pattern">{{formErrors.isEmpty}}</mat-error>
+          <mat-error *ngIf="form.controls.username.invalid && form.controls.username.errors.pattern">{{formErrors.invalidUsername}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
           <input type="text" matInput formControlName="email" placeholder="{{placeholders.email}}">
           <mat-error *ngIf="form.controls.email.invalid && form.controls.email.errors.required && !form.controls.email.errors.pattern">{{formErrors.isEmpty}}</mat-error>
           <mat-error *ngIf="form.controls.email.invalid && form.controls.email.errors.pattern">{{formErrors.invalidEmail}}</mat-error>

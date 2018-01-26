@@ -12,12 +12,12 @@ const routes = [
     component: AppComponent,
     children: [
       {
-        path: 'profile',
-        component: ProfileComponent
+      path: 'registration',
+      component: RegistrationComponent
       },
       {
-        path: 'registration',
-        component: RegistrationComponent
+        path: ':username',
+        component: ProfileComponent
       }
     ]
   }

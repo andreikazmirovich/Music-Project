@@ -1,13 +1,18 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as WaveSurfer from 'wavesurfer.js/dist/wavesurfer.min';
+import { ActivatedRoute } from '@angular/router';
+
+import { UserService } from './user.service';
+import { User } from './User';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements AfterViewInit {
+export class ProfileComponent implements AfterViewInit, OnInit {
 
+  public user: User;
   public songs = [
     {
       name: 'I Love Dogs',
@@ -20,7 +25,11 @@ export class ProfileComponent implements AfterViewInit {
   ];
   public curentWave: {id: number, song: any, playNow: boolean} = {id: null, song: null, playNow: false};
 
-  constructor() {}
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute
+  ) {
+  }
 
   closeAllTracksInfo(): void {
     const tracksInfo = document.querySelectorAll('.track-info') as HTMLCollectionOf<HTMLElement>;
@@ -73,6 +82,14 @@ export class ProfileComponent implements AfterViewInit {
       waveColor: 'violet',
       progressColor: 'purple',
       barWidth: 1,
+    });
+  }
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.userService.getUserByUsername({username: params.username}).subscribe(response => {
+        this.user = response.user;
+      });
     });
   }
 

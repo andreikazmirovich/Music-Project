@@ -1,0 +1,15 @@
+@import "../../shared/styles/const";
+
+form {
+  mat-form-field {
+    width: 100%;
+    color: black;
+  }
+  mat-dialog-actions {
+    button {
+      color: white;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}

@@ -30,15 +30,26 @@
       transform: scale(1.1);
     }
   }
+  #awatar {
+    height: 38px;
+    width: 38px;
+    float: right;
+    cursor: pointer;
+    line-height: 35px;
+    margin-left: 20px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    outline-style: none;
+  }
   #login {
     float: right;
     color: white;
     cursor: pointer;
-    line-height: 35px;
     margin-left: 20px;
     position: relative;
-    i{
-        font-size: 37px;
+    i {
+      font-size: 37px;
     }
   }
 }

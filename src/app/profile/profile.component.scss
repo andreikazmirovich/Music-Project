@@ -3,6 +3,7 @@
 
 #profile {
   #title {
+    min-height: 200px;
     #img {
       width: 200px;
       height: 200px;
@@ -11,7 +12,6 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-image: url('../shared/images/r4brmAI_Xqo.jpg');
       float: left;
       margin-right: 20px;
     }
