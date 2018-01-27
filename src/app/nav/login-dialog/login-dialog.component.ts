@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from '../../shared/services/login.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
+import { LoginService } from '../../shared/services/login.service';
 
 @Component({
   selector: 'app-login-dialog',
@@ -10,6 +11,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class LoginDialogComponent implements OnInit {
   form: FormGroup;
+  formPlaceholders = {
+    email: 'Електронна пошта',
+    password: 'Пароль'
+  };
+  buttonPlaceholders = {
+    logIn: 'Увійти',
+    signUp: 'Реєстрація'
+  };
 
   constructor(
     private fb: FormBuilder,

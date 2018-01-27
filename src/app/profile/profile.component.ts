@@ -12,7 +12,7 @@ import { User } from './User';
 })
 export class ProfileComponent implements AfterViewInit, OnInit {
 
-  public user: User;
+  public user = {};
   public songs = [
     {
       name: 'I Love Dogs',

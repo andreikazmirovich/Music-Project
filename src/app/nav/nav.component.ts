@@ -3,6 +3,7 @@ import { LoginService } from '../shared/services/login.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { AddAudioDialogComponent } from './add-audio-dialog/add-audio-dialog.component';
 
 @Component({
   selector: 'app-nav',
@@ -11,13 +12,19 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 })
 export class NavComponent implements OnInit {
   isLoggedIn = false;
-  userPhoto = localStorage.getItem('userPhoto');
+  userPhoto = localStorage.getItem('photo') || '';
 
   constructor(public dialog: MatDialog) { }
 
   openLoginDialog() {
     const dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '250px'
+    });
+  }
+
+  openAddAudioDialog() {
+    const dialogRef = this.dialog.open(AddAudioDialogComponent, {
+      width: '300px'
     });
   }
 

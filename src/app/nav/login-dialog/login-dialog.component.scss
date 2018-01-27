@@ -1,5 +1,3 @@
-@import "../../shared/styles/const";
-
 form {
   mat-form-field {
     width: 100%;
@@ -8,8 +6,11 @@ form {
   mat-dialog-actions {
     button {
       color: white;
-      margin: 0 auto;
       display: block;
+      width: 100%;
+      &:last-child{
+        margin: 10px 0 0 0;
+      }
     }
   }
 }

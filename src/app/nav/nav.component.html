@@ -6,10 +6,10 @@
         <div routerLink="/profile" *ngIf="userPhoto;else login" id="awatar" [ngStyle]="{'background-image': 'url('+ userPhoto +')'}"></div>
         <ng-template #login>
           <div id="login">
-            <i class="fa fa-user" (click)="openLoginDialog()"></i>
+            <i class="fa fa-sign-in" (click)="openLoginDialog()"></i>
           </div>
         </ng-template>
-        <div id="plus"></div>
+        <div id="plus" (click)="openAddAudioDialog()"></div>
       </div>
     </div>
   </div>

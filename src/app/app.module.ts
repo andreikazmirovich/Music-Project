@@ -16,6 +16,8 @@ import { LoginService } from './shared/services/login.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { TokenInterceptor } from './shared/services/token.interceptor';
 import { UserService } from './profile/user.service';
+import { AddAudioDialogComponent } from './nav/add-audio-dialog/add-audio-dialog.component';
+import { AudioService } from './shared/services/audio.service';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { UserService } from './profile/user.service';
     NavComponent,
     ProfileComponent,
     LoginDialogComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AddAudioDialogComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -38,6 +41,7 @@ import { UserService } from './profile/user.service';
   providers: [
     LoginService,
     UserService,
+    AudioService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
@@ -45,7 +49,8 @@ import { UserService } from './profile/user.service';
     }
   ],
   entryComponents: [
-    LoginDialogComponent
+    LoginDialogComponent,
+    AddAudioDialogComponent
   ],
   bootstrap: [AppComponent]
 })
