@@ -39,6 +39,13 @@ export class LoginDialogComponent implements OnInit {
   login(data) {
     this.loginService.login(data).subscribe(response => {
       this.loginService.getUser().subscribe(userResp => {
+        const user = userResp.user;
+        console.log(user);
+
+        localStorage.setItem('name', user.name);
+        localStorage.setItem('username', user.username);
+        localStorage.setItem('photo', user.photo);
+
         this.dialogRef.close();
       });
     });
