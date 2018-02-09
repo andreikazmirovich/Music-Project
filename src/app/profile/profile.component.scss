@@ -4,16 +4,16 @@
 #profile {
   #title {
     min-height: 200px;
+    text-align: center;
     #img {
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
       border-radius: $radius;
       border: 3px solid mat-color($app-primary);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      float: left;
-      margin-right: 20px;
     }
     #info {
       #name {
@@ -49,7 +49,7 @@
     }
   }
   #audios {
-    margin-top: 20px;
+    margin: 20px 0;
     .track-block {
       margin-top: 20px;
       .track {
@@ -95,10 +95,15 @@
       }
       .track-info{
         width: 90%;
+        padding: 0px;
         height: 1px;
         background-color: mat-color($app-light);
         margin: -10px auto;
         transition: ease .2s all;
+        audio{
+          display: none;
+          width: 100%;
+        }
       }
     }
   }

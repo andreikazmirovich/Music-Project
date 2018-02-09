@@ -1,4 +1,4 @@
-<div class="container" id="profile">
+<div *ngIf="user" class="container" id="profile">
   <div class="col-md-8 mx-auto">
     <div id="title" class="col-md-12">
       <div id="img" [ngStyle]="{'background-image': 'url(' + user.photo + ')'}"></div>
@@ -13,17 +13,18 @@
         <span class="categ active">Audio</span>
         <span class="categ">Video</span>
       </div>
-      <div id="audios">
-        <div class="track-block" *ngFor="let song of songs; let i = index">
+      <div *ngIf="audios" id="audios">
+        <div class="track-block" *ngFor="let audio of audios; let i = index">
           <mat-card class="track">
             <div class="num">{{i+1}}</div>
-            <span class="name">{{song.name}}</span>
+            <span class="name">{{audio.name}}</span>
             <div class="play-btn">
               <i class="fa fa-play" aria-hidden="true"></i>
             </div>
           </mat-card>
           <div class="track-info">
-            <div id="waveform-{{i}}"></div>
+            <audio src="{{audio.base64file}}" controls controlsList="nodownload"></audio>
+            <!-- <div id="waveform-{{i}}"></div> -->
           </div>
         </div>
       </div>

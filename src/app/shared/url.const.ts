@@ -3,5 +3,7 @@ export const API_URL = {
     LOGIN: 'signin',
     REGISTRATION: 'signup',
     USER: 'user',
-    GET_USER_BY_USERNAME: 'getUserByUsername'
+    GET_USER_BY_USERNAME: 'getUserByUsername',
+
+    AUDIO: 'audio'
 };

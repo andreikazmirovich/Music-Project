@@ -16,6 +16,15 @@ form{
             display: none;
         }
     }
+    #audioLoaderDone{
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        background-color: mat-color($app-primary);
+        color: white;
+        text-align: center;
+        font-size: 30px;
+    }
     mat-form-field{
         width: 100%;
     }

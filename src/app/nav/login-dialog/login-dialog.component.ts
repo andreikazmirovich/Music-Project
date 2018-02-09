@@ -46,7 +46,7 @@ export class LoginDialogComponent implements OnInit {
         localStorage.setItem('username', user.username);
         localStorage.setItem('photo', user.photo);
 
-        this.dialogRef.close();
+        location.reload();
       });
     });
   }
