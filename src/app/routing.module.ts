@@ -5,21 +5,20 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { StreamPageComponent } from './stream-page/stream-page.component';
 
 const routes = [
   {
-    path: '',
-    component: AppComponent,
-    children: [
-      {
-      path: 'registration',
-      component: RegistrationComponent
-      },
-      {
-        path: ':username',
-        component: ProfileComponent
-      }
-    ]
+    path: 'registration',
+    component: RegistrationComponent
+  },
+  {
+    path: 'stream/:username',
+    component: StreamPageComponent
+  },
+  {
+    path: ':username',
+    component: ProfileComponent
   }
 ];
 
