@@ -3,13 +3,16 @@
     <div class="row">
       <div class="col-md-12">
         <div id="logo" class="hvr-buzz-out"></div>
-        <div routerLink="/profile" *ngIf="userPhoto;else login" id="awatar" [ngStyle]="{'background-image': 'url('+ userPhoto +')'}"></div>
+        <div [routerLink]="username" *ngIf="userPhoto;else login" id="awatar" [ngStyle]="{'background-image': 'url('+ userPhoto +')'}"></div>
         <ng-template #login>
           <div id="login">
             <i class="fa fa-sign-in" (click)="openLoginDialog()"></i>
           </div>
         </ng-template>
         <div id="plus" (click)="openAddAudioDialog()"></div>
+        <div id="broadcast" routerLink="/stream/{{username}}">
+          <i class="fa fa-microphone"></i>
+        </div>
       </div>
     </div>
   </div>

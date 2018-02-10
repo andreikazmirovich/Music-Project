@@ -13,6 +13,7 @@ import { AddAudioDialogComponent } from './add-audio-dialog/add-audio-dialog.com
 export class NavComponent implements OnInit {
   isLoggedIn = false;
   userPhoto = localStorage.getItem('photo') || '';
+  username = localStorage.getItem('username') || '';
 
   constructor(public dialog: MatDialog) { }
 
