@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { StreamPageComponent } from './stream-page/stream-page.component';
+import { StreamComponent } from './stream/stream.component';
 
 const routes = [
   {
@@ -14,7 +14,7 @@ const routes = [
   },
   {
     path: 'stream/:username',
-    component: StreamPageComponent
+    component: StreamComponent
   },
   {
     path: ':username',

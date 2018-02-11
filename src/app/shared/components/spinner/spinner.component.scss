@@ -11,30 +11,28 @@
         background-image: url('../../images/icon.svg');
         background-size: contain;
         transition: ease .1s all;
-        cursor: pointer;
         position: absolute;
         top: 50%;
         left: 50%;
         margin-top: -40px;
         margin-left: -40px;
         animation: logoSpinn 3s 0s infinite;
-    }
-}
-
-@keyframes logoSpinn {
-    10% {
-        transform: rotate(10deg);
-    }
-    20% {
-        transform: rotate(-10deg);
-    }
-    30% {
-        transform: rotate(10deg);
-    }
-    40% {
-        transform: rotate(-10deg);
-    }
-    50% {
-        transform: rotate(0deg);
+        @keyframes logoSpinn {
+            10% {
+                transform: rotate(10deg);
+            }
+            20% {
+                transform: rotate(-10deg);
+            }
+            30% {
+                transform: rotate(10deg);
+            }
+            40% {
+                transform: rotate(-10deg);
+            }
+            50% {
+                transform: rotate(0deg);
+            }
+        }
     }
 }

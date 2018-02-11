@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
@@ -9,7 +9,7 @@ import { LoginService } from '../../shared/services/login.service';
   templateUrl: './login-dialog.component.html',
   styleUrls: ['./login-dialog.component.scss']
 })
-export class LoginDialogComponent implements OnInit {
+export class LoginDialogComponent {
   form: FormGroup;
   formPlaceholders = {
     email: 'Електронна пошта',
@@ -37,6 +37,7 @@ export class LoginDialogComponent implements OnInit {
   }
 
   login(data) {
+    this.dialogRef.close();
     this.loginService.login(data).subscribe(response => {
       this.loginService.getUser().subscribe(userResp => {
         const user = userResp.user;
@@ -49,9 +50,6 @@ export class LoginDialogComponent implements OnInit {
         location.reload();
       });
     });
-  }
-
-  ngOnInit() {
   }
 
 }

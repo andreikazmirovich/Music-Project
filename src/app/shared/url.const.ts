@@ -5,5 +5,8 @@ export const API_URL = {
     USER: 'user',
     GET_USER_BY_USERNAME: 'getUserByUsername',
 
-    AUDIO: 'audio'
+    AUDIO: 'audio',
+
+    STREAM: 'stream',
+    MEMBER: 'member'
 };

@@ -31,7 +31,7 @@ export class LoginService {
       });
   }
 
-  public getUser(): Observable<any>{
+  public getUser(): Observable<any> {
     return this.http.get(`${API_URL.BASE}${API_URL.USER}`);
   }
 

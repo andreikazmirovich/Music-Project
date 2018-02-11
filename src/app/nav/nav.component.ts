@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { AddAudioDialogComponent } from './add-audio-dialog/add-audio-dialog.component';
+import { StreamDialogComponent } from './stream-dialog/stream-dialog.component';
 
 @Component({
   selector: 'app-nav',
@@ -26,6 +27,12 @@ export class NavComponent implements OnInit {
   openAddAudioDialog() {
     const dialogRef = this.dialog.open(AddAudioDialogComponent, {
       width: '300px'
+    });
+  }
+
+  openStreamDialog() {
+    const dialogRef = this.dialog.open(StreamDialogComponent, {
+      width: '250px'
     });
   }
 

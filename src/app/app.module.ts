@@ -18,10 +18,12 @@ import { TokenInterceptor } from './shared/services/token.interceptor';
 import { UserService } from './profile/user.service';
 import { AddAudioDialogComponent } from './nav/add-audio-dialog/add-audio-dialog.component';
 import { AudioService } from './shared/services/audio.service';
-import { StreamPageComponent } from './stream-page/stream-page.component';
+import { StreamComponent } from './stream/stream.component';
+import { StreamService } from './stream/stream.service';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { SpinnerService } from './shared/components/spinner/spinner.service';
 import { SpinnerInterceptor } from './shared/components/spinner/spinner.interceptor';
+import { StreamDialogComponent } from './nav/stream-dialog/stream-dialog.component';
 
 
 @NgModule({
@@ -32,8 +34,9 @@ import { SpinnerInterceptor } from './shared/components/spinner/spinner.intercep
     LoginDialogComponent,
     RegistrationComponent,
     AddAudioDialogComponent,
-    StreamPageComponent,
-    SpinnerComponent
+    StreamComponent,
+    SpinnerComponent,
+    StreamDialogComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -49,6 +52,7 @@ import { SpinnerInterceptor } from './shared/components/spinner/spinner.intercep
     UserService,
     AudioService,
     SpinnerService,
+    StreamService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
@@ -62,7 +66,8 @@ import { SpinnerInterceptor } from './shared/components/spinner/spinner.intercep
   ],
   entryComponents: [
     LoginDialogComponent,
-    AddAudioDialogComponent
+    AddAudioDialogComponent,
+    StreamDialogComponent
   ],
   bootstrap: [AppComponent]
 })

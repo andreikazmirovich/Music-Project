@@ -1,5 +1,4 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
-import * as WaveSurfer from 'wavesurfer.js/dist/wavesurfer.min';
 import { ActivatedRoute } from '@angular/router';
 
 import { UserService } from './user.service';
@@ -50,18 +49,15 @@ export class ProfileComponent implements AfterViewInit, OnInit {
         this.curentAudio.song = audioBlock;
         if (i === this.curentAudio.id) {
           if (this.curentAudio.playNow) {
-            console.log(1);
             this.curentAudio.playNow = false;
             curentBtn.className = 'fa fa-play';
             audioBlock.pause();
           } else {
-            console.log(2);
             this.curentAudio.playNow = true;
             curentBtn.className = 'fa fa-pause';
             audioBlock.play();
           }
         } else {
-          console.log(3);
           this.curentAudio.id = i;
           this.curentAudio.playNow = true;
           this.closeAllTracksInfo();
