@@ -6,8 +6,8 @@
     border-radius: $radius;
     height: 200px;
     text-align: center;
-    font-size: 50px;
     #text {
+        font-size: 50px;
         background: linear-gradient(270deg, #108dc7, #ef8e38);
         background-size: 400% 400%;
         background-clip: text;
@@ -27,5 +27,33 @@
             }
       }
     }
+    #actions{
+      margin-top: 30px;
+      #closeConnection{
+        color: white;
+        height: 22px;
+        line-height: 22px;
+      }
+    }
+    #members{
+      .member{
+
+      }
+    }
   }
+}::ng-deep snack-bar-container{
+  margin: 0 0 0 -100px;
+}
+::ng-deep snack-bar-container.notifySnackBar{
+  background-color: mat-color($app-primary);
+  text-align: center;
+  width: 200px;
+  height: 40px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+::ng-deep .notifySnackBar .mat-simple-snackbar {
+  display: block;
+  line-height: 15px;
 }

@@ -12,7 +12,7 @@ export class StreamDialogComponent {
     title: 'Назва'
   };
   buttonPlaceholders = {
-    start: 'Запустити'
+    yes: 'Так'
   };
 
   constructor(

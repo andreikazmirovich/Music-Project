@@ -14,8 +14,19 @@ export class StreamService {
     return this.http.post<{status: string}>(`${API_URL.BASE}${API_URL.STREAM}`, stream);
   }
 
-  getStream(username): Observable<{data: Stream}> {
-    return this.http.get<{data: Stream}>(`${API_URL.BASE}${API_URL.STREAM}/${username}`);
+  getStream(streamOwnerUsername: string): Observable<{data: Stream}> {
+    return this.http.get<{data: Stream}>(`${API_URL.BASE}${API_URL.STREAM}/${streamOwnerUsername}`);
   }
 
+  deleteStream(streamOwnerUsername: string): Observable<{status: string}> {
+    return this.http.delete<{status: string}>(`${API_URL.BASE}${API_URL.STREAM}/${streamOwnerUsername}`);
+  }
+
+  addNewMember(streamOwnerUsername: string, memberUsername: string): Observable<{status: string}> {
+    return this.http.post<{status: string}>(`${API_URL.BASE}${API_URL.STREAM}${API_URL.MEMBER}/${streamOwnerUsername}`, {newMemberUsername: memberUsername});
+  }
+
+  getLastMember(streamOwnerUsername: string): Observable<{lastMember: string}> {
+    return this.http.get<{lastMember: string}>(`${API_URL.BASE}${API_URL.STREAM}${API_URL.MEMBER}/${streamOwnerUsername}`);
+  }
 }

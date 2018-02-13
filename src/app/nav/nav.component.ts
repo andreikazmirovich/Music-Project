@@ -13,10 +13,13 @@ import { StreamDialogComponent } from './stream-dialog/stream-dialog.component';
 })
 export class NavComponent implements OnInit {
   isLoggedIn = false;
-  userPhoto = localStorage.getItem('photo') || '';
-  username = localStorage.getItem('username') || '';
+  userPhoto = '';
+  username = '';
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private loginService: LoginService
+  ) {}
 
   openLoginDialog() {
     const dialogRef = this.dialog.open(LoginDialogComponent, {
@@ -37,6 +40,14 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loginService.getUser().subscribe(response => {
+      this.userPhoto = localStorage.getItem('photo');
+      this.username = localStorage.getItem('username');
+    }, error => {
+      if (error.statusText === 'Unauthorized') {
+        localStorage.clear();
+      }
+    });
   }
 
 }
