@@ -24,6 +24,7 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
 import { SpinnerService } from './shared/components/spinner/spinner.service';
 import { SpinnerInterceptor } from './shared/components/spinner/spinner.interceptor';
 import { StreamDialogComponent } from './nav/stream-dialog/stream-dialog.component';
+import { SubscribedListModalComponent } from './profile/subscribed-list-modal/subscribed-list-modal.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { StreamDialogComponent } from './nav/stream-dialog/stream-dialog.compone
     AddAudioDialogComponent,
     StreamComponent,
     SpinnerComponent,
-    StreamDialogComponent
+    StreamDialogComponent,
+    SubscribedListModalComponent
   ],
   imports: [
     BrowserAnimationsModule,

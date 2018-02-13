@@ -7,6 +7,8 @@ import {
 } from '@angular/common/http';
 import { LoginService } from './login.service';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -16,6 +18,11 @@ export class TokenInterceptor implements HttpInterceptor {
             setHeaders: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
-        }));
+        })).catch(error => {
+            if (error.error.statusText === 'Unauthorized') {
+                localStorage.clear();
+                return Observable.throw(error);
+            }
+        });
     }
 }

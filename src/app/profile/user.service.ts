@@ -14,4 +14,12 @@ export class UserService {
     return this.http.post<{user: User}>(`${API_URL.BASE}${API_URL.GET_USER_BY_USERNAME}`, data);
   }
 
+  subscribeOrDescribe(username): Observable<{status: string}> {
+    return this.http.post<{status: string}>(`${API_URL.BASE}${API_URL.USER}${API_URL.SUBSCRIBE_OR_DESCRIBE}`, {username});
+  }
+
+  isSubscribed(username): Observable<{data: boolean}> {
+    return this.http.post<{data: boolean}>(`${API_URL.BASE}${API_URL.USER}${API_URL.IS_SUBSCRIBED}`, {username});
+  }
+
 }

@@ -1,12 +1,14 @@
 export const API_URL = {
-    BASE: 'http://laravel/api/',
-    LOGIN: 'signin',
-    REGISTRATION: 'signup',
-    USER: 'user',
-    GET_USER_BY_USERNAME: 'getUserByUsername',
+    BASE: 'http://laravel/api',
+    LOGIN: '/signin',
+    REGISTRATION: '/signup',
+    USER: '/user',
+    SUBSCRIBE_OR_DESCRIBE: '/subscribeOrDescribe',
+    IS_SUBSCRIBED: '/isSubscribed',
+    GET_USER_BY_USERNAME: '/getUserByUsername',
 
-    AUDIO: 'audio',
+    AUDIO: '/audio',
 
-    STREAM: 'stream',
-    MEMBER: 'member'
+    STREAM: '/stream',
+    MEMBER: '/member'
 };

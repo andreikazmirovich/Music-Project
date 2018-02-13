@@ -1,24 +1,28 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { UserService } from './user.service';
 import { User } from './User';
 import { AudioService } from '../shared/services/audio.service';
+import { LoginService } from '../shared/services/login.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements AfterViewInit, OnInit {
+export class ProfileComponent implements OnInit {
 
   public user;
   public audios;
+  public isCurentLoggedInUser: boolean;
+  public isSubscribed: boolean;
   public curentAudio: {id: number, song: any, playNow: boolean} = {id: null, song: null, playNow: false};
 
   constructor(
     private userService: UserService,
     private audioService: AudioService,
+    private loginService: LoginService,
     private route: ActivatedRoute
   ) {
   }
@@ -71,6 +75,12 @@ export class ProfileComponent implements AfterViewInit, OnInit {
     }
   }
 
+  subscribeOrDescribe(): void {
+    this.userService.subscribeOrDescribe(this.user.username).subscribe(response => {
+      this.isSubscribed = response[0] === 'subscribed' ? true : false;
+    });
+  }
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userService.getUserByUsername({username: params.username}).subscribe(response => {
@@ -82,10 +92,15 @@ export class ProfileComponent implements AfterViewInit, OnInit {
           }, 1);
         });
       });
+      this.loginService.getUser().subscribe(response => {
+        this.isCurentLoggedInUser = response.user.username === params.username;
+        if (!this.isCurentLoggedInUser) {
+          this.userService.isSubscribed(params.username).subscribe(resp => {
+            this.isSubscribed = resp.data;
+          });
+        }
+      });
     });
-  }
-
-  ngAfterViewInit() {
   }
 
 }

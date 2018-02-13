@@ -7,6 +7,7 @@
         <div id="style">{{user.style}}</div>
         <div id="description">{{user.description}}</div>
       </div>
+      <button *ngIf="!isCurentLoggedInUser" (click)="subscribeOrDescribe()" id="subscribe" mat-raised-button [color]="isSubscribed ? 'accent' : 'primary'">{{isSubscribed ? "Відписатись" : "Підписатись"}}</button>
     </div>
     <div class="col-md-12">
       <div id="category">
@@ -24,7 +25,6 @@
           </mat-card>
           <div class="track-info">
             <audio src="{{audio.base64file}}" controls controlsList="nodownload"></audio>
-            <!-- <div id="waveform-{{i}}"></div> -->
           </div>
         </div>
       </div>

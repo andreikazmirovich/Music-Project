@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { SpinnerService } from './shared/components/spinner/spinner.service';
+import { LoginService } from './shared/services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ import { SpinnerService } from './shared/components/spinner/spinner.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(private spinner: SpinnerService) {}
+  constructor(
+    private spinner: SpinnerService
+  ) {}
 
 }
