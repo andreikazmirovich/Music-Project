@@ -28,9 +28,11 @@ form{
     mat-form-field{
         width: 100%;
     }
-    button{
-        color: white;
-        display: block;
-        width: 100%;
+    mat-dialog-actions{
+        button{
+            color: white;
+            display: block;
+            width: 100%;
+        }
     }
 }

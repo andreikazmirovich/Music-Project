@@ -41,13 +41,12 @@ export class LoginDialogComponent {
     this.loginService.login(data).subscribe(response => {
       this.loginService.getUser().subscribe(userResp => {
         const user = userResp.user;
-        console.log(user);
 
         localStorage.setItem('name', user.name);
         localStorage.setItem('username', user.username);
         localStorage.setItem('photo', user.photo);
 
-        location.reload();
+        location.assign(`./${localStorage.getItem('username')}`);
       });
     });
   }

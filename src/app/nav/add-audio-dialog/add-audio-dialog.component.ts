@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material';
 
 import { AudioService } from '../../shared/services/audio.service';
 import { LoginService } from '../../shared/services/login.service';
@@ -23,7 +24,8 @@ export class AddAudioDialogComponent {
   constructor(
     private fb: FormBuilder,
     private audioService: AudioService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private dialogRef: MatDialogRef<AddAudioDialogComponent>
   ) {
     this.createAddAudioForm();
   }
@@ -50,7 +52,7 @@ export class AddAudioDialogComponent {
         base64file: this.base64file
       };
       this.audioService.sendAudio(requestData).subscribe(response => {
-        console.log(response);
+        this.dialogRef.close();
       });
     });
   }

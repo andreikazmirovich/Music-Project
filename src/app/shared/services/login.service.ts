@@ -17,6 +17,8 @@ export class LoginService {
       name: regData.name,
       username: regData.username,
       email: regData.email,
+      style: regData.musicStyle,
+      description: regData.description,
       photo: regData.photo,
       password: regData.password,
       c_password: regData.rePassword
@@ -29,6 +31,10 @@ export class LoginService {
       .do(response => {
         localStorage.setItem('token', response.token);
       });
+  }
+
+  public isLoggedIn(): Observable<{data: boolean}> {
+    return this.http.get<{data: boolean}>(`${API_URL.BASE}${API_URL.USER}${API_URL.IS_LOGGED_IN}`);
   }
 
   public getUser(): Observable<any> {
