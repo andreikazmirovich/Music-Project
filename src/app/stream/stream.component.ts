@@ -50,18 +50,20 @@ export class StreamComponent implements OnInit {
       this.checkAdmin(params.username);
       if (params.username !== localStorage.getItem('username')) {
         this.streamService.getStream(params.username).subscribe(response => {
-          const stream = response.data;
-          const conn = this.peer.connect(stream.stream_key);
-          conn.on('open', () => {
-            this.streamService.addNewMember(params.username, this.username).subscribe(() => {
-              conn.send(this.peer.id);
+          if (response.data.message !== 'Not Found') {
+            const stream = response.data;
+            const conn = this.peer.connect(stream.stream_key);
+            conn.on('open', () => {
+              this.streamService.addNewMember(params.username, this.username).subscribe(() => {
+                conn.send(this.peer.id);
+                this.streamStarted = true;
+              });
             });
-          });
+          }
         });
       } else {
         this.peer.on('open', () => {
           this.streamService.createStream({stream_key: this.peer.id}).subscribe(response => {
-            console.log(`Broadcast creating status: ${response.status}`);
             this.streamStarted = true;
           });
           this.peer.on('connection', conn => {
@@ -115,6 +117,7 @@ export class StreamComponent implements OnInit {
     this.streamService.deleteStream(this.username).subscribe(response => {
       while (this.connections[0]) {
         this.connections.forEach(conn => {
+          conn.send('broadcast finished');
           conn.close();
           this.connections.splice(this.connections[this.connections.indexOf(conn)], 1);
         });

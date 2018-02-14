@@ -40,12 +40,16 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginService.getUser().subscribe(response => {
-      this.userPhoto = localStorage.getItem('photo');
-      this.username = localStorage.getItem('username');
-    }, error => {
-      if (error.statusText === 'Unauthorized') {
-        localStorage.clear();
+    this.loginService.isLoggedIn().subscribe(isLoggedIn => {
+      if (isLoggedIn.data) {
+        this.loginService.getUser().subscribe(response => {
+          this.userPhoto = localStorage.getItem('photo');
+          this.username = localStorage.getItem('username');
+        }, error => {
+          if (error.statusText === 'Unauthorized') {
+            localStorage.clear();
+          }
+        });
       }
     });
   }

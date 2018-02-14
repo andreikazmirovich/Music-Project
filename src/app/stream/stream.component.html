@@ -2,7 +2,10 @@
     <div class="col-md-6 mx-auto">
         <div id="infoBlock">
             <div *ngIf="streamStarted">
-                <div id="text">Broadcast started!</div>
+                <div *ngIf="isAdmin; else isUser" id="text">Broadcast started!</div>
+                <ng-template #isUser>
+                    <div id="text">Hi, {{username}}!</div>
+                </ng-template>
                 <div id="actions">
                     <button *ngIf="isAdmin" id="closeConnection" routerLink="../../{{username}}" (click)="closeAllConnections()" mat-raised-button color="accent">{{buttonPlaceholders.end}}</button>
                 </div>
