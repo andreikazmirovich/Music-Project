@@ -1,0 +1,8 @@
+<h1 matDialogTitle>Підписки</h1>
+
+<mat-dialog-content>
+  <mat-card (click)="close()" [routerLink]="subscription.username" *ngFor="let subscription of subscriptions">
+    <div id="photo" [ngStyle]="{'background-image': 'url(' + subscription.photo + ')'}"></div>
+    <div id="username">{{subscription.username}}</div>
+  </mat-card>
+</mat-dialog-content>

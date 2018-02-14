@@ -33,6 +33,28 @@
       height: 30px;
       line-height: 30px;
     }
+    #socialInfo{
+      #info{
+        color: grey;
+        font-weight: 100;
+        margin-top: 10px;
+        overflow: hidden;
+        transition: ease .2s all;
+        span{
+          &:first-child{
+            cursor: pointer;
+          }
+          &:last-child{
+            margin-left: 15px;
+          }
+        }
+      }
+      i[class="fa fa-sort-down"], i[class="fa fa-sort-up"]{
+        font-size: 30px;
+        color: mat-color($app-primary);
+        cursor: pointer;
+      }
+    }
   }
   #category {
     text-align: center;
@@ -112,5 +134,10 @@
         }
       }
     }
+  }
+  #audiosEmpty{
+    text-align: center;
+    padding: 10px;
+    color: mat-color($app-light);
   }
 }

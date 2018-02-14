@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { UserService } from './user.service';
 import { User } from './User';
 import { AudioService } from '../shared/services/audio.service';
 import { LoginService } from '../shared/services/login.service';
+import { SubscribedListModalComponent } from './subscribed-list-modal/subscribed-list-modal.component';
 
 @Component({
   selector: 'app-profile',
@@ -15,15 +17,20 @@ export class ProfileComponent implements OnInit {
 
   public user;
   public audios;
+  public isLoggedIn: boolean;
   public isCurentLoggedInUser: boolean;
   public isSubscribed: boolean;
+  public isSocialInfoOpened = false;
+  public subscriptionsCount: number;
+  public subscribersCount: number;
   public curentAudio: {id: number, song: any, playNow: boolean} = {id: null, song: null, playNow: false};
 
   constructor(
     private userService: UserService,
     private audioService: AudioService,
     private loginService: LoginService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {
   }
 
@@ -75,9 +82,30 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  checkIsLoggedIn(callback): void {
+    this.loginService.isLoggedIn().subscribe(response => {
+      callback(response.data);
+    });
+  }
+
   subscribeOrDescribe(): void {
     this.userService.subscribeOrDescribe(this.user.username).subscribe(response => {
-      this.isSubscribed = response[0] === 'subscribed' ? true : false;
+      if (response[0] === 'subscribed') {
+        this.isSubscribed = true;
+        this.subscribersCount++;
+      } else {
+        this.isSubscribed = false;
+        this.subscribersCount--;
+      }
+    });
+  }
+
+  openSubscribedListModal() {
+    const dialogRef = this.dialog.open(SubscribedListModalComponent, {
+      width: '300px',
+      data: {
+        curentUsername: this.user.username
+      }
     });
   }
 
@@ -85,6 +113,10 @@ export class ProfileComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userService.getUserByUsername({username: params.username}).subscribe(response => {
         this.user = response.user;
+        this.userService.getSubscriptionsAndSubscribersCount(this.user.username).subscribe(resp => {
+          this.subscriptionsCount = resp[0].data;
+          this.subscribersCount = resp[1].data || 0;
+        });
         this.audioService.getUserAudios(this.user.id).subscribe(audioResp => {
           this.audios = audioResp.audios;
           setTimeout(() => {
@@ -92,11 +124,16 @@ export class ProfileComponent implements OnInit {
           }, 1);
         });
       });
-      this.loginService.getUser().subscribe(response => {
-        this.isCurentLoggedInUser = response.user.username === params.username;
-        if (!this.isCurentLoggedInUser) {
-          this.userService.isSubscribed(params.username).subscribe(resp => {
-            this.isSubscribed = resp.data;
+      this.checkIsLoggedIn(isLoggedIn => {
+        this.isLoggedIn = isLoggedIn;
+        if (this.isLoggedIn) {
+          this.loginService.getUser().subscribe(response => {
+            this.isCurentLoggedInUser = response.user.username === params.username;
+            if (!this.isCurentLoggedInUser) {
+              this.userService.isSubscribed(params.username).subscribe(resp => {
+                this.isSubscribed = resp.data;
+              });
+            }
           });
         }
       });

@@ -7,7 +7,14 @@
         <div id="style">{{user.style}}</div>
         <div id="description">{{user.description}}</div>
       </div>
-      <button *ngIf="!isCurentLoggedInUser" (click)="subscribeOrDescribe()" id="subscribe" mat-raised-button [color]="isSubscribed ? 'accent' : 'primary'">{{isSubscribed ? "Відписатись" : "Підписатись"}}</button>
+      <button *ngIf="!isCurentLoggedInUser && isLoggedIn" (click)="subscribeOrDescribe()" id="subscribe" mat-raised-button [color]="isSubscribed ? 'accent' : 'primary'">{{isSubscribed ? "Відписатись" : "Підписатись"}}</button>
+      <div id="socialInfo">
+        <div id="info" [style.height]="isSocialInfoOpened ? '30px' : '0px'">
+          <span (click)="openSubscribedListModal()">Subscriptions: {{subscriptionsCount}}</span>
+          <span>Subscribers: {{subscribersCount}}</span>
+        </div>
+        <i (click)="isSocialInfoOpened = !isSocialInfoOpened" class="fa {{isSocialInfoOpened ? 'fa-sort-up' : 'fa-sort-down'}}"></i>
+      </div>
     </div>
     <div class="col-md-12">
       <div id="category">
@@ -27,6 +34,7 @@
             <audio src="{{audio.base64file}}" controls controlsList="nodownload"></audio>
           </div>
         </div>
+        <div *ngIf="audios.length === 0" id="audiosEmpty">У користувача ще немає записів</div>
       </div>
     </div>
   </div>
