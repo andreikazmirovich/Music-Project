@@ -38,6 +38,11 @@
             text-align: center;
         }
     }
+    .mini-title{
+        color: mat-color($app-light);
+        text-align: center;
+        margin: 30px 10px 10px 10px;
+    }
     button{
         color: white;
         margin: 10px auto 0 auto;

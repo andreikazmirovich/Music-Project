@@ -5,4 +5,6 @@ export class Stream {
     members?: string;
     created_at?: string;
     updated_at?: string;
+
+    message?: string;
 }

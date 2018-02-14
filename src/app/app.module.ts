@@ -69,7 +69,8 @@ import { SubscribedListModalComponent } from './profile/subscribed-list-modal/su
   entryComponents: [
     LoginDialogComponent,
     AddAudioDialogComponent,
-    StreamDialogComponent
+    StreamDialogComponent,
+    SubscribedListModalComponent
   ],
   bootstrap: [AppComponent]
 })

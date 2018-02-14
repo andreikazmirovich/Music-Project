@@ -5,6 +5,6 @@ export interface UserRegistration {
     photo: string;
     password: string;
     rePassword: string;
-    music_style?: string;
+    musicStyle?: string;
     description?: string;
 }

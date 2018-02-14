@@ -8,10 +8,11 @@
           <i *ngIf="!userPhoto" class="fa fa-user-o" aria-hidden="true"></i>
         </label>
         <input id="photo-upload" #photo type="file" (change)="uploadPhoto(photo.files)">
+        <div class="mini-title">Обов'язкова інформація</div>
         <mat-form-field>
           <input type="text" matInput formControlName="name" placeholder="{{placeholders.name}}">
-          <mat-error *ngIf="form.controls.email.invalid && form.controls.email.errors.required && !form.controls.email.errors.pattern">{{formErrors.isEmpty}}</mat-error>
-          <mat-error *ngIf="form.controls.email.invalid && form.controls.email.errors.pattern">{{formErrors.invalidEmail}}</mat-error>
+          <mat-error *ngIf="form.controls.name.invalid && form.controls.name.errors.required && !form.controls.name.errors.minlength">{{formErrors.isEmpty}}</mat-error>
+          <mat-error *ngIf="form.controls.name.invalid && form.controls.name.errors.pattern">{{formErrors.invalidName}}</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input type="text" matInput formControlName="username" placeholder="{{placeholders.username}}">
@@ -34,6 +35,15 @@
             <mat-error *ngIf="form.controls.passwords.invalid">{{formErrors.invalidRePassword}}</mat-error>
           </mat-form-field>
         </div>
+        <div class="mini-title">Додаткова інформація</div>
+        <mat-form-field>
+          <input type="text" matInput formControlName="musicStyle" placeholder="{{placeholders.musicStyle}}">
+          <mat-error *ngIf="form.controls.musicStyle.invalid && form.controls.musicStyle.errors.maxlength">{{formErrors.invalidMusicStyle}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea rows="5" matInput formControlName="description" placeholder="{{placeholders.description}}"></textarea>
+          <mat-error *ngIf="form.controls.description.invalid && form.controls.description.errors.maxlength">{{formErrors.invalidDescription}}</mat-error>
+        </mat-form-field>
         <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Готово</button>
       </div>
     </div>
