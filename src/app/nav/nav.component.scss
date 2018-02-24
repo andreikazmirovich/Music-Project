@@ -1,6 +1,5 @@
 @import "../../theme.scss";
 @import "../shared/styles/const";
-
 @mixin fa-icon {
   float: right;
   color: white;
@@ -33,7 +32,77 @@
     transition: ease .1s all;
     cursor: pointer;
   }
-  #broadcast{
+  #search-block {
+    float: right;
+    width: 240px;
+    #search-icon {
+      float: right;
+      width: 40px;
+      height: 40px;
+      background-image: url('../shared/images/search.svg');
+      background-size: contain;
+      cursor: pointer;
+    }
+    #inputOutputData {
+      input {
+        float: right;
+        width: 0px;
+        font-size: 20px;
+        margin-top: 2px;
+        padding-left: 10px;
+        color: white;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        border-left: 3px solid white;
+        transition: ease .2s width;
+      }
+      #results {
+        width: 200px;
+        min-height: 50px;
+        position: absolute;
+        top: 45px;
+        background-color: white;
+        box-shadow: $shadow;
+        .findedUser {
+          padding: 10px;
+          clear: both;
+          height: 50px;
+          width: 100%;
+          border-bottom: 1px solid mat-color($app-light);
+          cursor: pointer;
+          outline: none;
+          &:last-child {
+            border: none;
+          }
+          &:hover {
+            color: white;
+            background-color: lighten(mat-color($app-primary), 5%);
+          }
+          #awatar {
+            width: 30px;
+            height: 30px;
+            background-position: center;
+            background-size: cover;
+            float: left;
+          }
+          #username {
+            line-height: 25px;
+            margin-left: 10px;
+            float: left;
+          }
+        }
+        #empty {
+          color: mat-color($app-light);
+          text-align: center;
+          line-height: 47px;
+          font-size: 18px;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+  #broadcast {
     @include fa-icon;
   }
   #plus {

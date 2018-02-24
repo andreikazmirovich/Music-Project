@@ -10,6 +10,7 @@ export const API_URL = {
     GET_SUBSCRIBERS_COUNT: '/getSubscribersCount',
     GET_All_SUBSCRIPTIONS: '/getAllSubscriptions',
     GET_USER_BY_USERNAME: '/getUserByUsername',
+    SEARCH: '/search',
 
     AUDIO: '/audio',
 

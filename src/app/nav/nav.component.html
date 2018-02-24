@@ -13,6 +13,24 @@
         <div id="broadcast" (click)="openStreamDialog()">
           <i class="fa fa-microphone"></i>
         </div>
+        <div id="search-block">
+          <div (click)="onClickOnSearchButton()" id="search-icon"></div>
+          <div id="inputOutputData">
+            <input #searchUserInput (keyup)="searchUser(searchUserInput.value)" id="input" [style.width]="searchInputIsVisible ? '200px' : '0px'"
+              [style.border-left]="searchInputIsVisible ? '3px solid white' : 'none'" type="text">
+            <div *ngIf="searchInputIsVisible" id="results">
+              <div *ngIf="findedUsers.length > 0; else empty">
+                <div [routerLink]="user.username" (click)="searchInputIsVisible = !searchInputIsVisible; searchUserInput.value = ''; findedUsers = []" *ngFor="let user of findedUsers" class="findedUser">
+                  <div id="awatar" [ngStyle]="{'background-image': 'url('+ user.photo +')'}"></div>
+                  <div id="username">{{user.username}}</div>
+                </div>
+              </div>
+              <ng-template #empty>
+                <div id="empty">Empty</div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

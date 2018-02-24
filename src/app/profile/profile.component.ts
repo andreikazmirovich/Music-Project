@@ -114,6 +114,7 @@ export class ProfileComponent implements OnInit {
       this.userService.getUserByUsername({username: params.username}).subscribe(response => {
         this.user = response.user;
         this.userService.getSubscriptionsAndSubscribersCount(this.user.username).subscribe(resp => {
+          this.isSocialInfoOpened = false;
           this.subscriptionsCount = resp[0].data;
           this.subscribersCount = resp[1].data || 0;
         });

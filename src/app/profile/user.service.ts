@@ -34,4 +34,8 @@ export class UserService {
     return this.http.get<{data: any}>(`${API_URL.BASE}${API_URL.USER}${API_URL.GET_All_SUBSCRIPTIONS}/${username}`);
   }
 
+  searchUserByUsername(username): Observable<{data: any}> {
+    return this.http.get<{data: any}>(`${API_URL.BASE}${API_URL.USER}${API_URL.SEARCH}/${username}`);
+  }
+
 }

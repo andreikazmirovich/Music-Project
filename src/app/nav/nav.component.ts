@@ -5,6 +5,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { AddAudioDialogComponent } from './add-audio-dialog/add-audio-dialog.component';
 import { StreamDialogComponent } from './stream-dialog/stream-dialog.component';
+import { User } from '../profile/User';
+import { UserService } from '../profile/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,30 +15,55 @@ import { StreamDialogComponent } from './stream-dialog/stream-dialog.component';
 })
 export class NavComponent implements OnInit {
   isLoggedIn = false;
+  searchInputIsVisible = false;
   userPhoto = '';
   username = '';
+  localSearchUsername: string;
+  findedUsers: User[] = [];
 
   constructor(
     public dialog: MatDialog,
-    private loginService: LoginService
-  ) {}
+    private loginService: LoginService,
+    private userService: UserService
+  ) { }
 
-  openLoginDialog() {
+  openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '250px'
     });
   }
 
-  openAddAudioDialog() {
+  openAddAudioDialog(): void {
     const dialogRef = this.dialog.open(AddAudioDialogComponent, {
       width: '300px'
     });
   }
 
-  openStreamDialog() {
+  openStreamDialog(): void {
     const dialogRef = this.dialog.open(StreamDialogComponent, {
       width: '250px'
     });
+  }
+
+  onClickOnSearchButton(): void{
+    this.searchInputIsVisible = !this.searchInputIsVisible;
+    document.querySelector('input[_ngcontent-c2]').focus();
+  }
+
+  searchUser(username): void {
+    if (username !== this.localSearchUsername) {
+      if (username) {
+        this.userService.searchUserByUsername(username).subscribe(response => {
+          if(this.findedUsers !== response.data) {
+            this.findedUsers = response.data;
+          }
+        });
+        this.localSearchUsername = username;
+      }
+      else{
+        this.findedUsers = [];
+      }
+    }
   }
 
   ngOnInit() {
