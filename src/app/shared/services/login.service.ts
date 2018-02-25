@@ -33,6 +33,11 @@ export class LoginService {
       });
   }
 
+  public logout() {
+    localStorage.clear();
+    location.reload();
+  }
+
   public isLoggedIn(): Observable<{data: boolean}> {
     return this.http.get<{data: boolean}>(`${API_URL.BASE}${API_URL.USER}${API_URL.IS_LOGGED_IN}`);
   }
