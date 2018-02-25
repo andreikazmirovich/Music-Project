@@ -15,7 +15,8 @@ import { UserService } from '../profile/user.service';
 })
 export class NavComponent implements OnInit {
   isLoggedIn = false;
-  searchInputIsVisible = false;
+  isSearchInputVisible = false;
+  isMenuVisible = false;
   userPhoto = '';
   username = '';
   localSearchUsername: string;
@@ -46,7 +47,7 @@ export class NavComponent implements OnInit {
   }
 
   onClickOnSearchButton(): void{
-    this.searchInputIsVisible = !this.searchInputIsVisible;
+    this.isSearchInputVisible = !this.isSearchInputVisible;
     document.querySelector('input[_ngcontent-c2]').focus();
   }
 

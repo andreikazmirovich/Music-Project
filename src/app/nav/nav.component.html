@@ -3,24 +3,32 @@
     <div class="row">
       <div class="col-md-12">
         <div id="logo" class="hvr-buzz-out"></div>
-        <div [routerLink]="username" *ngIf="userPhoto;else login" id="awatar" [ngStyle]="{'background-image': 'url('+ userPhoto +')'}"></div>
+        <div id="awatar-block" *ngIf="userPhoto;else login">
+          <div id="awatar" (click)="isMenuVisible = !isMenuVisible" [ngStyle]="{'background-image': 'url('+ userPhoto +')'}"></div>
+          <ul *ngIf="isMenuVisible" id="menu">
+            <li (click)="isMenuVisible = !isMenuVisible" [routerLink]="username">Profile <i class="fa fa-user"></i></li><div class="line"></div>
+            <li (click)="openAddAudioDialog(); isMenuVisible = !isMenuVisible">Add new audio <i class="fa fa-plus"></i></li><div class="line"></div>
+            <li (click)="openStreamDialog(); isMenuVisible = !isMenuVisible">Start broadcast! <i class="fa fa-microphone"></i></li><div class="line"></div>
+            <li (click)="loginService.logout()">Logout <i class="fa fa-sign-out"></i></li>
+          </ul>
+        </div>
         <ng-template #login>
           <div id="login">
             <i class="fa fa-sign-in" (click)="openLoginDialog()"></i>
           </div>
         </ng-template>
-        <div id="plus" (click)="openAddAudioDialog()"></div>
+        <!-- <div id="plus" (click)="openAddAudioDialog()"></div>
         <div id="broadcast" (click)="openStreamDialog()">
           <i class="fa fa-microphone"></i>
-        </div>
+        </div> -->
         <div id="search-block">
           <div (click)="onClickOnSearchButton()" id="search-icon"></div>
           <div id="inputOutputData">
-            <input #searchUserInput (keyup)="searchUser(searchUserInput.value)" id="input" [style.width]="searchInputIsVisible ? '200px' : '0px'"
-              [style.border-left]="searchInputIsVisible ? '3px solid white' : 'none'" type="text">
-            <div *ngIf="searchInputIsVisible" id="results">
+            <input #searchUserInput (keyup)="searchUser(searchUserInput.value)" id="input" [style.width]="isSearchInputVisible ? '200px' : '0px'"
+              [style.border-left]="isSearchInputVisible ? '3px solid white' : 'none'" type="text">
+            <div *ngIf="isSearchInputVisible" id="results">
               <div *ngIf="findedUsers.length > 0; else empty">
-                <div [routerLink]="user.username" (click)="searchInputIsVisible = !searchInputIsVisible; searchUserInput.value = ''; findedUsers = []" *ngFor="let user of findedUsers" class="findedUser">
+                <div [routerLink]="user.username" (click)="isSearchInputVisible = !isSearchInputVisible; searchUserInput.value = ''; findedUsers = []" *ngFor="let user of findedUsers" class="findedUser">
                   <div id="awatar" [ngStyle]="{'background-image': 'url('+ user.photo +')'}"></div>
                   <div id="username">{{user.username}}</div>
                 </div>

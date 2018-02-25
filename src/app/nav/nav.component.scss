@@ -82,6 +82,7 @@
           #awatar {
             width: 30px;
             height: 30px;
+            border-radius: 50%;
             background-position: center;
             background-size: cover;
             float: left;
@@ -118,17 +119,53 @@
       transform: scale(1.1);
     }
   }
-  #awatar {
-    height: 38px;
-    width: 38px;
+  #awatar-block {
     float: right;
-    cursor: pointer;
-    line-height: 35px;
-    margin-left: 10px;
-    background-position: center;
-    background-size: cover;
-    border-radius: 50%;
-    outline-style: none;
+    position: relative;
+    #awatar {
+      height: 38px;
+      width: 38px;
+      cursor: pointer;
+      line-height: 35px;
+      margin-left: 10px;
+      background-position: center;
+      background-size: cover;
+      border-radius: 50%;
+    }
+    #menu{
+      position: absolute;
+      right: 0;
+      list-style: none;
+      width: 161px;
+      padding: 0;
+      text-align: right;
+      line-height: 35px;
+      box-shadow: $shadow;
+      margin-top: 7px;
+      background-color: white;
+      li{
+        outline: none;
+        padding: 3px 15px;
+        cursor: pointer;
+        user-select: none;
+        &:last-child{
+          margin-top: 10px;
+        }
+        &:hover {
+          color: white;
+          background-color: lighten(mat-color($app-primary), 5%);
+        }
+        i{
+          margin-left: 5px;
+        }
+      }
+      .line{
+        width: 80%;
+        height: 1px;
+        background-color: mat-color($app-light);
+        margin: 0 auto;
+      }
+    }
   }
   #login {
     @include fa-icon;
